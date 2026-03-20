@@ -1,0 +1,745 @@
+{
+  "metadata": {
+    "jd_analysis_time_ms": 0.54,
+    "dynamic_match_mode": "keyword_heuristic",
+    "skills_detected": 6,
+    "total_questions": 24
+  },
+  "assessment_modules": [
+    {
+      "skill_id": "python_programming",
+      "skill_name": "Python Programming",
+      "questions": [
+        {
+          "question_id": "py_adv_002",
+          "type": "scenario",
+          "question": "A Python web service leaks memory over 24 h but memory_profiler shows no Python heap growth. What is the most likely cause?",
+          "options": [
+            "Reference cycles in pure Python",
+            "C extension or native library not releasing memory",
+            "Too many open file descriptors",
+            "Database connection pool leak"
+          ],
+          "correct_answer": 1,
+          "explanation": "If the Python heap appears stable, the leak is outside Python's allocator — typically a C extension (e.g., NumPy, lxml) that does not release native memory. Reference cycles are caught by Python's cyclic GC.",
+          "difficulty_score": 9,
+          "time_seconds": 120,
+          "tags": [
+            "memory_leaks",
+            "debugging",
+            "c_extensions"
+          ],
+          "prerequisites": [
+            "py_adv_001"
+          ],
+          "common_mistakes": [
+            "Blaming Python GC first",
+            "Restarting service instead of diagnosing"
+          ],
+          "learning_resources": [
+            "https://docs.python.org/3/c-api/memory.html"
+          ],
+          "real_world_context": "Production memory leaks in ML services are often numpy/C binding issues."
+        },
+        {
+          "question_id": "py_beg_008",
+          "type": "code_output",
+          "question": "What does this print?\n\n```python\nfor i in range(2, 10, 3):\n    print(i, end=' ')\n```",
+          "options": [
+            "2 5 8",
+            "2 4 6 8",
+            "3 6 9",
+            "2 3 4 5 6 7 8 9"
+          ],
+          "correct_answer": 0,
+          "explanation": "range(start, stop, step) generates 2, 5, 8. The step is 3, stop is exclusive at 10, so 11 would exceed. Many confuse stop as inclusive.",
+          "difficulty_score": 3,
+          "time_seconds": 45,
+          "tags": [
+            "range",
+            "loops",
+            "iteration"
+          ],
+          "prerequisites": [
+            "py_beg_001"
+          ],
+          "common_mistakes": [
+            "Thinking stop is inclusive",
+            "Ignoring the step parameter"
+          ],
+          "learning_resources": [
+            "https://docs.python.org/3/library/stdtypes.html#range"
+          ],
+          "real_world_context": "range() with step is useful for batch processing every Nth item."
+        },
+        {
+          "question_id": "py_int_004",
+          "type": "mcq",
+          "question": "Which decorator caches the return value of a function for repeated inputs?",
+          "options": [
+            "@staticmethod",
+            "@functools.lru_cache",
+            "@classmethod",
+            "@property"
+          ],
+          "correct_answer": 1,
+          "explanation": "functools.lru_cache memoises function results so repeated calls with the same arguments return the cached value instantly. The others are unrelated to caching.",
+          "difficulty_score": 5,
+          "time_seconds": 60,
+          "tags": [
+            "decorators",
+            "caching",
+            "functools"
+          ],
+          "prerequisites": [
+            "py_beg_001"
+          ],
+          "common_mistakes": [
+            "Using @staticmethod which has no caching",
+            "Manually writing a dict cache instead"
+          ],
+          "learning_resources": [
+            "https://docs.python.org/3/library/functools.html#functools.lru_cache"
+          ],
+          "real_world_context": "lru_cache dramatically speeds up recursive algorithms like Fibonacci."
+        },
+        {
+          "question_id": "py_beg_002",
+          "type": "code_output",
+          "question": "What is the output?\n\n```python\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(len(x))\n```",
+          "options": [
+            "3",
+            "4",
+            "Error",
+            "None"
+          ],
+          "correct_answer": 1,
+          "explanation": "Lists are assigned by reference; y and x point to the same object. Appending to y also modifies x, so len(x) is 4. Beginners often assume y = x creates a copy.",
+          "difficulty_score": 3,
+          "time_seconds": 60,
+          "tags": [
+            "lists",
+            "mutability",
+            "references"
+          ],
+          "prerequisites": [
+            "py_beg_001"
+          ],
+          "common_mistakes": [
+            "Assuming y is a copy of x",
+            "Not understanding references"
+          ],
+          "learning_resources": [
+            "https://docs.python.org/3/library/stdtypes.html#list"
+          ],
+          "real_world_context": "Mutable default arguments and shared state bugs originate from this behaviour."
+        }
+      ]
+    },
+    {
+      "skill_id": "sql",
+      "skill_name": "SQL",
+      "questions": [
+        {
+          "question_id": "sql_int_004",
+          "type": "mcq",
+          "question": "Which window function returns the rank of a row with NO gaps for ties?",
+          "options": [
+            "RANK()",
+            "ROW_NUMBER()",
+            "DENSE_RANK()",
+            "NTILE()"
+          ],
+          "correct_answer": 2,
+          "explanation": "DENSE_RANK() assigns consecutive ranks without gaps: tied rows get the same rank and the next rank is one higher. RANK() leaves gaps after tied rows. ROW_NUMBER() gives unique sequential numbers ignoring ties.",
+          "difficulty_score": 5,
+          "time_seconds": 60,
+          "tags": [
+            "window_functions",
+            "ranking",
+            "analytics"
+          ],
+          "prerequisites": [
+            "sql_int_001"
+          ],
+          "common_mistakes": [
+            "Confusing RANK and DENSE_RANK gap behaviour"
+          ],
+          "learning_resources": [
+            "https://www.postgresql.org/docs/current/functions-window.html"
+          ],
+          "real_world_context": "DENSE_RANK() is used in leaderboards and top-N reporting queries."
+        },
+        {
+          "question_id": "sql_beg_002",
+          "type": "true_false",
+          "question": "A PRIMARY KEY constraint automatically creates a UNIQUE index on the column.",
+          "correct_answer": true,
+          "explanation": "PRIMARY KEY enforces both NOT NULL and UNIQUE constraints, and most databases automatically create a unique index to enforce uniqueness efficiently.",
+          "difficulty_score": 2,
+          "time_seconds": 30,
+          "tags": [
+            "constraints",
+            "indexing",
+            "primary_key"
+          ],
+          "prerequisites": [
+            "sql_beg_001"
+          ],
+          "common_mistakes": [
+            "Thinking PRIMARY KEY and UNIQUE are identical",
+            "Not knowing an index is auto-created"
+          ],
+          "learning_resources": [
+            "https://www.postgresql.org/docs/current/ddl-constraints.html"
+          ],
+          "real_world_context": "Understanding implicit indexes helps avoid redundant manual index creation."
+        },
+        {
+          "question_id": "sql_adv_001",
+          "type": "scenario",
+          "question": "A query on a 10M row table is slow. EXPLAIN shows 'Using filesort'. Which optimisation is most effective?",
+          "options": [
+            "Add more RAM",
+            "Create index on ORDER BY column",
+            "Partition the table",
+            "Use LIMIT to reduce rows"
+          ],
+          "correct_answer": 1,
+          "explanation": "'Using filesort' means the DB cannot use an index for sorting. Creating an index on the ORDER BY column allows index-based ordering, eliminating the filesort and dramatically improving performance.",
+          "difficulty_score": 8,
+          "time_seconds": 120,
+          "tags": [
+            "performance",
+            "indexing",
+            "filesort",
+            "EXPLAIN"
+          ],
+          "prerequisites": [
+            "sql_int_002",
+            "sql_int_006"
+          ],
+          "common_mistakes": [
+            "Adding hardware before optimising queries",
+            "Over-partitioning without need"
+          ],
+          "learning_resources": [
+            "https://dev.mysql.com/doc/refman/8.0/en/order-by-optimization.html"
+          ],
+          "real_world_context": "Critical for production databases with large sorted result sets."
+        },
+        {
+          "question_id": "sql_beg_005",
+          "type": "fill_in_blank",
+          "question": "Complete the query to find all users whose name starts with 'A':\n\n```sql\nSELECT * FROM users WHERE name _____ 'A%';\n```",
+          "correct_answer": "LIKE",
+          "acceptable_answers": [
+            "like",
+            "LIKE"
+          ],
+          "explanation": "LIKE with wildcard % matches any sequence of characters. 'A%' matches strings starting with 'A'. ILIKE is the case-insensitive variant in PostgreSQL.",
+          "difficulty_score": 2,
+          "time_seconds": 30,
+          "tags": [
+            "LIKE",
+            "wildcards",
+            "filtering"
+          ],
+          "prerequisites": [],
+          "common_mistakes": [
+            "Using = instead of LIKE for pattern matching",
+            "Forgetting % means any characters"
+          ],
+          "learning_resources": [
+            "https://www.w3schools.com/sql/sql_like.asp"
+          ],
+          "real_world_context": "LIKE is used in search features but full-text indexes (tsvector) are more efficient at scale."
+        }
+      ]
+    },
+    {
+      "skill_id": "rest_apis",
+      "skill_name": "REST APIs",
+      "questions": [
+        {
+          "question_id": "rest_adv_002",
+          "type": "mcq",
+          "question": "What is HATEOAS in REST API design?",
+          "options": [
+            "Handling All Types of Errors on App Server",
+            "Hypermedia As The Engine Of Application State",
+            "High Availability Transmitting Errors Over API Sockets",
+            "Hypertext Application Transfer Environment OS"
+          ],
+          "correct_answer": 1,
+          "explanation": "HATEOAS dictates that a REST client needs no prior knowledge of how to interact with an application beyond a generic understanding of hypermedia. The server provides links dynamically telling the client what actions are available.",
+          "difficulty_score": 7,
+          "time_seconds": 90,
+          "tags": [
+            "HATEOAS",
+            "hypermedia",
+            "REST_maturity"
+          ],
+          "prerequisites": [
+            "rest_int_004"
+          ],
+          "common_mistakes": [
+            "Building APIs that require out-of-band documentation without links"
+          ],
+          "learning_resources": [
+            "https://en.wikipedia.org/wiki/HATEOAS"
+          ],
+          "real_world_context": "HATEOAS represents Richardson Maturity Model Level 3, the pinnacle of true REST APIs."
+        },
+        {
+          "question_id": "rest_beg_003",
+          "type": "mcq",
+          "question": "What does HTTP status code 404 mean?",
+          "options": [
+            "Internal Server Error",
+            "Unauthorised",
+            "Not Found",
+            "Bad Request"
+          ],
+          "correct_answer": 2,
+          "explanation": "404 Not Found means the server cannot find the requested resource. 500 is Internal Server Error, 401 is Unauthorised, 400 is Bad Request.",
+          "difficulty_score": 1,
+          "time_seconds": 30,
+          "tags": [
+            "status_codes",
+            "404"
+          ],
+          "prerequisites": [],
+          "common_mistakes": [
+            "Confusing 404 with 401"
+          ],
+          "learning_resources": [
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+          ],
+          "real_world_context": "404 is the most famous status code encountered in daily browsing."
+        },
+        {
+          "question_id": "rest_beg_002",
+          "type": "true_false",
+          "question": "A POST request is idempotent.",
+          "correct_answer": false,
+          "explanation": "POST is not idempotent. Sending the same POST request multiple times creates multiple resources. PUT and DELETE are idempotent (calling them once has the same effect as calling them multiple times).",
+          "difficulty_score": 3,
+          "time_seconds": 30,
+          "tags": [
+            "idempotency",
+            "POST",
+            "HTTP"
+          ],
+          "prerequisites": [
+            "rest_beg_001"
+          ],
+          "common_mistakes": [
+            "Thinking POST is idempotent like PUT"
+          ],
+          "learning_resources": [
+            "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent"
+          ],
+          "real_world_context": "Lack of idempotency in POST causes duplicate payments on double-clicks."
+        },
+        {
+          "question_id": "rest_int_004",
+          "type": "mcq",
+          "question": "What is statelessness in REST?",
+          "options": [
+            "No database is used",
+            "The server stores no client context between requests",
+            "The client stores no state",
+            "All data is kept in memory"
+          ],
+          "correct_answer": 1,
+          "explanation": "Statelessness means every request from client to server must contain all information needed to understand and process it. The server cannot rely on stored session context from previous requests.",
+          "difficulty_score": 6,
+          "time_seconds": 60,
+          "tags": [
+            "stateless",
+            "REST_principles",
+            "architecture"
+          ],
+          "prerequisites": [
+            "rest_beg_004"
+          ],
+          "common_mistakes": [
+            "Confusing DB state with session state"
+          ],
+          "learning_resources": [
+            "https://restfulapi.net/statelessness/"
+          ],
+          "real_world_context": "Stateless APIs enable horisontal scaling behind load balancers without sticky sessions."
+        }
+      ]
+    },
+    {
+      "skill_id": "docker",
+      "skill_name": "Docker",
+      "questions": [
+        {
+          "question_id": "docker_beg_001",
+          "type": "mcq",
+          "question": "What does a Dockerfile define?",
+          "options": [
+            "A running container",
+            "Instructions to build a Docker image",
+            "A Docker network",
+            "A volume mount"
+          ],
+          "correct_answer": 1,
+          "explanation": "A Dockerfile is a text file with ordered instructions to build a Docker image. FROM sets the base image, RUN executes commands, COPY adds files, CMD sets the default startup command.",
+          "difficulty_score": 1,
+          "time_seconds": 30,
+          "tags": [
+            "dockerfile",
+            "images",
+            "basics"
+          ],
+          "prerequisites": [],
+          "common_mistakes": [
+            "Confusing Dockerfile with docker-compose.yml",
+            "Confusing image with container"
+          ],
+          "learning_resources": [
+            "https://docs.docker.com/engine/reference/builder/"
+          ],
+          "real_world_context": "Every Docker-based deployment starts with a well-written Dockerfile."
+        },
+        {
+          "question_id": "docker_beg_002",
+          "type": "true_false",
+          "question": "A Docker container retains data written to its filesystem after the container is removed.",
+          "correct_answer": false,
+          "explanation": "Container filesystems are ephemeral — data written inside is lost when the container is removed. Use Docker volumes or bind mounts to persist data beyond the container lifecycle.",
+          "difficulty_score": 2,
+          "time_seconds": 30,
+          "tags": [
+            "volumes",
+            "persistence",
+            "containers"
+          ],
+          "prerequisites": [
+            "docker_beg_001"
+          ],
+          "common_mistakes": [
+            "Writing data inside containers without volumes"
+          ],
+          "learning_resources": [
+            "https://docs.docker.com/storage/volumes/"
+          ],
+          "real_world_context": "Database containers must use volumes or all data is lost on restart."
+        },
+        {
+          "question_id": "docker_adv_001",
+          "type": "scenario",
+          "question": "A container running as root writes files to a volume. The host sees them as root-owned, blocking a non-root host process. What is the fix?",
+          "options": [
+            "Use chmod 777 on the volume",
+            "Run container as a non-root user with the same UID as the host process",
+            "Use a tmpfs volume",
+            "Remove volume permissions"
+          ],
+          "correct_answer": 1,
+          "explanation": "Docker containers inherit file ownership based on UIDs. Running as a non-root user with USER in the Dockerfile and matching the host UID ensures volume files have the correct ownership without privilege escalation.",
+          "difficulty_score": 8,
+          "time_seconds": 120,
+          "tags": [
+            "security",
+            "user_namespaces",
+            "volumes",
+            "UID"
+          ],
+          "prerequisites": [
+            "docker_int_001"
+          ],
+          "common_mistakes": [
+            "Running all containers as root for convenience"
+          ],
+          "learning_resources": [
+            "https://docs.docker.com/engine/security/userns-remap/"
+          ],
+          "real_world_context": "Root container files block CI pipelines that run as non-root users."
+        },
+        {
+          "question_id": "docker_int_002",
+          "type": "mcq",
+          "question": "What is the difference between COPY and ADD in a Dockerfile?",
+          "options": [
+            "No difference",
+            "ADD can fetch URLs and extract tar archives; COPY only copies local files",
+            "COPY is faster than ADD",
+            "ADD requires root privileges"
+          ],
+          "correct_answer": 1,
+          "explanation": "COPY simply copies local files into the image. ADD has extra features: it can download files from URLs and auto-extract tar archives. Best practice is to use COPY unless the extra ADD features are specifically needed.",
+          "difficulty_score": 5,
+          "time_seconds": 45,
+          "tags": [
+            "dockerfile",
+            "COPY",
+            "ADD"
+          ],
+          "prerequisites": [
+            "docker_beg_001"
+          ],
+          "common_mistakes": [
+            "Using ADD for simple file copies (obscures intent)"
+          ],
+          "learning_resources": [
+            "https://docs.docker.com/engine/reference/builder/#copy"
+          ],
+          "real_world_context": "COPY is preferred in almost all Dockerfiles to keep intent explicit."
+        }
+      ]
+    },
+    {
+      "skill_id": "kubernetes",
+      "skill_name": "Kubernetes",
+      "questions": [
+        {
+          "question_id": "k8s_beg_002",
+          "type": "true_false",
+          "question": "A Kubernetes Service provides a stable network endpoint for a dynamic set of Pods.",
+          "correct_answer": true,
+          "explanation": "Pods have ephemeral IP addresses that change on restart. A Service provides a stable virtual IP and DNS name, load-balancing traffic across matching Pods using label selectors.",
+          "difficulty_score": 2,
+          "time_seconds": 30,
+          "tags": [
+            "services",
+            "networking",
+            "pods"
+          ],
+          "prerequisites": [
+            "k8s_beg_001"
+          ],
+          "common_mistakes": [
+            "Connecting directly to Pod IPs instead of using Services"
+          ],
+          "learning_resources": [
+            "https://kubernetes.io/docs/concepts/services-networking/service/"
+          ],
+          "real_world_context": "Services are how microservices discover and communicate with each other in Kubernetes."
+        },
+        {
+          "question_id": "k8s_int_001",
+          "type": "scenario",
+          "question": "Pods are being OOMKilled repeatedly. What Kubernetes configuration prevents this and provides scheduling hints?",
+          "options": [
+            "Pod Anti-Affinity",
+            "Resource requests and limits",
+            "PodDisruptionBudget",
+            "HorizontalPodAutoscaler"
+          ],
+          "correct_answer": 1,
+          "explanation": "Resource requests tell the scheduler how much memory to reserve for the Pod. Resource limits cap what the Pod can use. Without limits, a Pod can consume all node memory, causing OOMKill for itself or other Pods.",
+          "difficulty_score": 5,
+          "time_seconds": 75,
+          "tags": [
+            "resources",
+            "OOMKill",
+            "limits",
+            "requests"
+          ],
+          "prerequisites": [
+            "k8s_beg_003"
+          ],
+          "common_mistakes": [
+            "Deploying without resource limits",
+            "Setting limits too low causing constant OOMKill"
+          ],
+          "learning_resources": [
+            "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/"
+          ],
+          "real_world_context": "Missing resource limits cause noisy-neighbour OOM incidents in shared clusters."
+        },
+        {
+          "question_id": "k8s_beg_001",
+          "type": "mcq",
+          "question": "What is the smallest deployable unit in Kubernetes?",
+          "options": [
+            "Container",
+            "Pod",
+            "Node",
+            "Deployment"
+          ],
+          "correct_answer": 1,
+          "explanation": "A Pod is the smallest deployable unit in Kubernetes. It can contain one or more containers that share the same network namespace and storage. Pods are ephemeral; Deployments manage their lifecycle.",
+          "difficulty_score": 1,
+          "time_seconds": 30,
+          "tags": [
+            "pods",
+            "fundamentals",
+            "kubernetes"
+          ],
+          "prerequisites": [],
+          "common_mistakes": [
+            "Thinking a container is the basic unit in Kubernetes"
+          ],
+          "learning_resources": [
+            "https://kubernetes.io/docs/concepts/workloads/pods/"
+          ],
+          "real_world_context": "Every workload in Kubernetes runs inside a Pod, even if it is a single container."
+        },
+        {
+          "question_id": "k8s_adv_001",
+          "type": "scenario",
+          "question": "A stateful database cluster on Kubernetes needs stable network identities and ordered Pod startup. Which object is correct?",
+          "options": [
+            "Deployment",
+            "StatefulSet",
+            "DaemonSet",
+            "CronJob"
+          ],
+          "correct_answer": 1,
+          "explanation": "StatefulSets provide stable, unique Pod names (pod-0, pod-1), stable persistent volume claims, and ordered startup/shutdown. These are required for databases like Cassandra or Zookeeper that depend on node identity.",
+          "difficulty_score": 8,
+          "time_seconds": 120,
+          "tags": [
+            "StatefulSet",
+            "databases",
+            "stateful",
+            "persistence"
+          ],
+          "prerequisites": [
+            "k8s_int_004"
+          ],
+          "common_mistakes": [
+            "Using Deployment for clustered databases losing identity on rescheduling"
+          ],
+          "learning_resources": [
+            "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/"
+          ],
+          "real_world_context": "StatefulSets are the Kubernetes mechanism for running distributed databases in production."
+        }
+      ]
+    },
+    {
+      "skill_id": "aws_cloud",
+      "skill_name": "AWS / Cloud",
+      "questions": [
+        {
+          "question_id": "aws_beg_003",
+          "type": "mcq",
+          "question": "What is the primary purpose of AWS Auto Scaling?",
+          "options": [
+            "Automatically back up data",
+            "Automatically add or remove EC2 instances based on demand",
+            "Replicate S3 buckets across regions",
+            "Monitor application logs"
+          ],
+          "correct_answer": 1,
+          "explanation": "Auto Scaling automatically adjusts EC2 capacity in response to demand, scaling out under load and scaling in during quiet periods. This optimises cost while maintaining performance.",
+          "difficulty_score": 2,
+          "time_seconds": 30,
+          "tags": [
+            "auto_scaling",
+            "EC2",
+            "cost_optimization"
+          ],
+          "prerequisites": [
+            "aws_beg_001"
+          ],
+          "common_mistakes": [
+            "Confusing Auto Scaling with load balancing"
+          ],
+          "learning_resources": [
+            "https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html"
+          ],
+          "real_world_context": "Auto Scaling is essential for cost-effective handling of traffic spikes."
+        },
+        {
+          "question_id": "aws_int_003",
+          "type": "code_debugging",
+          "question": "An S3 static website returns 403 on all files despite public bucket policy. What is most likely wrong?",
+          "options": [
+            "S3 does not support static websites",
+            "Block Public Access settings are enabled at account or bucket level",
+            "Files must be in a 'public' folder",
+            "CloudFront must be used instead of S3"
+          ],
+          "correct_answer": 1,
+          "explanation": "S3 Block Public Access settings (at account or bucket level) override bucket policies, blocking all public access. This setting must be disabled before bucket policies allowing public read take effect.",
+          "difficulty_score": 5,
+          "time_seconds": 60,
+          "tags": [
+            "S3",
+            "permissions",
+            "Block_Public_Access",
+            "static_website"
+          ],
+          "prerequisites": [
+            "aws_beg_002"
+          ],
+          "common_mistakes": [
+            "Setting bucket policy without disabling Block Public Access"
+          ],
+          "learning_resources": [
+            "https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html"
+          ],
+          "real_world_context": "Block Public Access is a common gotcha when deploying React SPAs to S3."
+        },
+        {
+          "question_id": "aws_int_001",
+          "type": "scenario",
+          "question": "An API receives 10,000 requests/second in bursts. The backend RDS database becomes a bottleneck. What AWS service mitigates this?",
+          "options": [
+            "Increase RDS instance size",
+            "Add ElastiCache (Redis) as a caching layer",
+            "Use multiple S3 buckets",
+            "Switch to DynamoDB immediately"
+          ],
+          "correct_answer": 1,
+          "explanation": "ElastiCache (Redis) caches hot query results, serving them from RAM without hitting RDS. This reduces database load dramatically during bursts. Scaling RDS is expensive and slower to provision.",
+          "difficulty_score": 5,
+          "time_seconds": 75,
+          "tags": [
+            "ElastiCache",
+            "Redis",
+            "caching",
+            "RDS"
+          ],
+          "prerequisites": [
+            "aws_beg_001"
+          ],
+          "common_mistakes": [
+            "Scaling the database vertically before adding caching"
+          ],
+          "learning_resources": [
+            "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html"
+          ],
+          "real_world_context": "Redis caching is a standard AWS architecture pattern for high-traffic read-heavy APIs."
+        },
+        {
+          "question_id": "aws_beg_001",
+          "type": "mcq",
+          "question": "Which AWS service provides object storage?",
+          "options": [
+            "EC2",
+            "RDS",
+            "S3",
+            "ECS"
+          ],
+          "correct_answer": 2,
+          "explanation": "S3 (Simple Storage Service) provides scalable object storage. EC2 provides virtual machines, RDS provides managed relational databases, ECS runs Docker containers.",
+          "difficulty_score": 1,
+          "time_seconds": 30,
+          "tags": [
+            "S3",
+            "storage",
+            "AWS_basics"
+          ],
+          "prerequisites": [],
+          "common_mistakes": [
+            "Confusing S3 with EBS (block storage)"
+          ],
+          "learning_resources": [
+            "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+          ],
+          "real_world_context": "S3 is the backbone of virtually every AWS architecture for storing files, backups, and static assets."
+        }
+      ]
+    }
+  ]
+}

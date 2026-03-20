@@ -1,7 +1,7 @@
 import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import analyze
+from routers import analyze, assessment
 from services.database import init_db
 import uvicorn
 
@@ -29,6 +29,7 @@ def startup():
     init_db()
 
 app.include_router(analyze.router, prefix="/api/v1", tags=["Analysis"])
+app.include_router(assessment.router, prefix="/api/v1", tags=["Assessment"])
 
 @app.get("/")
 def root():
