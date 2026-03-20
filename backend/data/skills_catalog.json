@@ -1,0 +1,1561 @@
+{
+  "skills_taxonomy": {
+    "programming_languages": {
+      "python": {
+        "aliases": [
+          "python3",
+          "py"
+        ],
+        "category": "programming"
+      },
+      "javascript": {
+        "aliases": [
+          "js",
+          "nodejs",
+          "node.js",
+          "es6"
+        ],
+        "category": "programming"
+      },
+      "typescript": {
+        "aliases": [
+          "ts"
+        ],
+        "category": "programming"
+      },
+      "java": {
+        "aliases": [
+          "java8",
+          "java11",
+          "java17"
+        ],
+        "category": "programming"
+      },
+      "go": {
+        "aliases": [
+          "golang"
+        ],
+        "category": "programming"
+      },
+      "rust": {
+        "aliases": [],
+        "category": "programming"
+      },
+      "c++": {
+        "aliases": [
+          "cpp",
+          "c plus plus"
+        ],
+        "category": "programming"
+      },
+      "c#": {
+        "aliases": [
+          "csharp",
+          "dotnet",
+          ".net"
+        ],
+        "category": "programming"
+      },
+      "sql": {
+        "aliases": [
+          "mysql",
+          "postgresql",
+          "sqlite",
+          "t-sql",
+          "pl/sql"
+        ],
+        "category": "data"
+      },
+      "r": {
+        "aliases": [
+          "rstats"
+        ],
+        "category": "data"
+      },
+      "scala": {
+        "aliases": [],
+        "category": "programming"
+      },
+      "kotlin": {
+        "aliases": [],
+        "category": "programming"
+      },
+      "swift": {
+        "aliases": [],
+        "category": "programming"
+      },
+      "php": {
+        "aliases": [],
+        "category": "programming"
+      },
+      "ruby": {
+        "aliases": [
+          "rails",
+          "ruby on rails"
+        ],
+        "category": "programming"
+      }
+    },
+    "ml_ai": {
+      "machine learning": {
+        "aliases": [
+          "ml",
+          "supervised learning",
+          "unsupervised learning"
+        ],
+        "category": "ml_ai"
+      },
+      "deep learning": {
+        "aliases": [
+          "dl",
+          "neural networks",
+          "ann",
+          "dnn"
+        ],
+        "category": "ml_ai"
+      },
+      "nlp": {
+        "aliases": [
+          "natural language processing",
+          "text mining",
+          "text analytics"
+        ],
+        "category": "ml_ai"
+      },
+      "computer vision": {
+        "aliases": [
+          "cv",
+          "image recognition",
+          "object detection"
+        ],
+        "category": "ml_ai"
+      },
+      "pytorch": {
+        "aliases": [
+          "torch"
+        ],
+        "category": "ml_ai"
+      },
+      "tensorflow": {
+        "aliases": [
+          "tf",
+          "keras"
+        ],
+        "category": "ml_ai"
+      },
+      "scikit-learn": {
+        "aliases": [
+          "sklearn"
+        ],
+        "category": "ml_ai"
+      },
+      "transformers": {
+        "aliases": [
+          "huggingface",
+          "bert",
+          "gpt",
+          "llm"
+        ],
+        "category": "ml_ai"
+      },
+      "mlops": {
+        "aliases": [
+          "ml ops",
+          "model deployment"
+        ],
+        "category": "ml_ai"
+      },
+      "data science": {
+        "aliases": [
+          "ds",
+          "data analysis",
+          "statistical analysis"
+        ],
+        "category": "ml_ai"
+      },
+      "feature engineering": {
+        "aliases": [],
+        "category": "ml_ai"
+      },
+      "model evaluation": {
+        "aliases": [
+          "cross-validation",
+          "hyperparameter tuning"
+        ],
+        "category": "ml_ai"
+      }
+    },
+    "web_development": {
+      "react": {
+        "aliases": [
+          "reactjs",
+          "react.js"
+        ],
+        "category": "frontend"
+      },
+      "angular": {
+        "aliases": [
+          "angularjs"
+        ],
+        "category": "frontend"
+      },
+      "vue": {
+        "aliases": [
+          "vuejs",
+          "vue.js"
+        ],
+        "category": "frontend"
+      },
+      "html": {
+        "aliases": [
+          "html5"
+        ],
+        "category": "frontend"
+      },
+      "css": {
+        "aliases": [
+          "css3",
+          "sass",
+          "scss",
+          "tailwind",
+          "bootstrap"
+        ],
+        "category": "frontend"
+      },
+      "rest api": {
+        "aliases": [
+          "restful",
+          "rest",
+          "api design"
+        ],
+        "category": "backend"
+      },
+      "graphql": {
+        "aliases": [],
+        "category": "backend"
+      },
+      "fastapi": {
+        "aliases": [],
+        "category": "backend"
+      },
+      "django": {
+        "aliases": [],
+        "category": "backend"
+      },
+      "flask": {
+        "aliases": [],
+        "category": "backend"
+      },
+      "express": {
+        "aliases": [
+          "expressjs"
+        ],
+        "category": "backend"
+      },
+      "microservices": {
+        "aliases": [
+          "micro-services",
+          "soa"
+        ],
+        "category": "architecture"
+      }
+    },
+    "cloud_devops": {
+      "aws": {
+        "aliases": [
+          "amazon web services",
+          "ec2",
+          "s3",
+          "lambda",
+          "ecs"
+        ],
+        "category": "cloud"
+      },
+      "azure": {
+        "aliases": [
+          "microsoft azure",
+          "azure devops"
+        ],
+        "category": "cloud"
+      },
+      "gcp": {
+        "aliases": [
+          "google cloud",
+          "google cloud platform"
+        ],
+        "category": "cloud"
+      },
+      "docker": {
+        "aliases": [
+          "containerization",
+          "containers"
+        ],
+        "category": "devops"
+      },
+      "kubernetes": {
+        "aliases": [
+          "k8s",
+          "container orchestration"
+        ],
+        "category": "devops"
+      },
+      "ci/cd": {
+        "aliases": [
+          "continuous integration",
+          "continuous deployment",
+          "github actions",
+          "jenkins",
+          "gitlab ci"
+        ],
+        "category": "devops"
+      },
+      "terraform": {
+        "aliases": [
+          "infrastructure as code",
+          "iac"
+        ],
+        "category": "devops"
+      },
+      "linux": {
+        "aliases": [
+          "unix",
+          "bash",
+          "shell scripting"
+        ],
+        "category": "devops"
+      },
+      "git": {
+        "aliases": [
+          "version control",
+          "github",
+          "gitlab",
+          "bitbucket"
+        ],
+        "category": "devops"
+      }
+    },
+    "data_engineering": {
+      "spark": {
+        "aliases": [
+          "apache spark",
+          "pyspark"
+        ],
+        "category": "data_eng"
+      },
+      "kafka": {
+        "aliases": [
+          "apache kafka",
+          "event streaming"
+        ],
+        "category": "data_eng"
+      },
+      "airflow": {
+        "aliases": [
+          "apache airflow",
+          "workflow orchestration"
+        ],
+        "category": "data_eng"
+      },
+      "data pipelines": {
+        "aliases": [
+          "etl",
+          "elt",
+          "data integration"
+        ],
+        "category": "data_eng"
+      },
+      "pandas": {
+        "aliases": [
+          "dataframes"
+        ],
+        "category": "data_eng"
+      },
+      "numpy": {
+        "aliases": [],
+        "category": "data_eng"
+      },
+      "dbt": {
+        "aliases": [
+          "data build tool"
+        ],
+        "category": "data_eng"
+      },
+      "snowflake": {
+        "aliases": [],
+        "category": "data_eng"
+      },
+      "bigquery": {
+        "aliases": [
+          "bq"
+        ],
+        "category": "data_eng"
+      },
+      "mongodb": {
+        "aliases": [
+          "mongo",
+          "nosql"
+        ],
+        "category": "data_eng"
+      },
+      "redis": {
+        "aliases": [],
+        "category": "data_eng"
+      },
+      "elasticsearch": {
+        "aliases": [
+          "elastic",
+          "opensearch"
+        ],
+        "category": "data_eng"
+      }
+    },
+    "soft_skills": {
+      "communication": {
+        "aliases": [
+          "verbal communication",
+          "written communication"
+        ],
+        "category": "soft"
+      },
+      "leadership": {
+        "aliases": [
+          "team lead",
+          "people management"
+        ],
+        "category": "soft"
+      },
+      "agile": {
+        "aliases": [
+          "scrum",
+          "kanban",
+          "sprint",
+          "jira"
+        ],
+        "category": "soft"
+      },
+      "problem solving": {
+        "aliases": [
+          "analytical thinking",
+          "critical thinking"
+        ],
+        "category": "soft"
+      },
+      "project management": {
+        "aliases": [
+          "pm",
+          "stakeholder management"
+        ],
+        "category": "soft"
+      }
+    },
+    "operations": {
+      "project management": {
+        "aliases": [
+          "pmp",
+          "prince2",
+          "stakeholder management"
+        ],
+        "category": "ops"
+      },
+      "quality assurance": {
+        "aliases": [
+          "qa",
+          "quality control",
+          "qc",
+          "testing"
+        ],
+        "category": "ops"
+      },
+      "excel": {
+        "aliases": [
+          "microsoft excel",
+          "spreadsheets",
+          "vba"
+        ],
+        "category": "ops"
+      },
+      "power bi": {
+        "aliases": [
+          "powerbi",
+          "business intelligence",
+          "bi"
+        ],
+        "category": "ops"
+      },
+      "tableau": {
+        "aliases": [
+          "data visualisation",
+          "data visualization"
+        ],
+        "category": "ops"
+      },
+      "supply chain": {
+        "aliases": [
+          "logistics",
+          "procurement",
+          "inventory management"
+        ],
+        "category": "ops"
+      }
+    }
+  },
+  "level_indicators": {
+    "advanced": [
+      "expert",
+      "senior",
+      "lead",
+      "architect",
+      "5+ years",
+      "6+ years",
+      "7+ years",
+      "8+ years",
+      "proficient",
+      "extensive experience"
+    ],
+    "intermediate": [
+      "3+ years",
+      "4+ years",
+      "mid-level",
+      "experienced",
+      "solid understanding",
+      "working knowledge",
+      "2+ years"
+    ],
+    "beginner": [
+      "familiar",
+      "basic",
+      "entry",
+      "junior",
+      "learning",
+      "exposure",
+      "1+ year",
+      "fresher",
+      "intern"
+    ]
+  },
+  "course_catalog": {
+    "python_fundamentals": {
+      "id": "PY001",
+      "title": "Python Programming Fundamentals",
+      "skill": "python",
+      "duration_hours": 20,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Core Python syntax, data structures, OOP principles and standard library.",
+      "resources": [
+        {
+          "name": "Python Official Docs",
+          "url": "https://docs.python.org/3/tutorial/"
+        },
+        {
+          "name": "Automate the Boring Stuff",
+          "url": "https://automatetheboringstuff.com/"
+        }
+      ]
+    },
+    "python_advanced": {
+      "id": "PY002",
+      "title": "Advanced Python & Best Practices",
+      "skill": "python",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals"
+      ],
+      "description": "Decorators, generators, async/await, testing, packaging.",
+      "resources": [
+        {
+          "name": "Real Python Advanced",
+          "url": "https://realpython.com/tutorials/advanced/"
+        }
+      ]
+    },
+    "sql_fundamentals": {
+      "id": "SQL001",
+      "title": "SQL & Relational Databases",
+      "skill": "sql",
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "SQL queries, joins, aggregations, indexing, and query optimization.",
+      "resources": [
+        {
+          "name": "SQLZoo",
+          "url": "https://sqlzoo.net/"
+        },
+        {
+          "name": "Mode SQL Tutorial",
+          "url": "https://mode.com/sql-tutorial/"
+        }
+      ]
+    },
+    "ml_foundations": {
+      "id": "ML001",
+      "title": "Machine Learning Foundations",
+      "skill": "machine learning",
+      "duration_hours": 30,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals",
+        "sql_fundamentals"
+      ],
+      "description": "Supervised/unsupervised learning, evaluation metrics, scikit-learn.",
+      "resources": [
+        {
+          "name": "Google ML Crash Course",
+          "url": "https://developers.google.com/machine-learning/crash-course"
+        },
+        {
+          "name": "Kaggle ML Course",
+          "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+        }
+      ]
+    },
+    "deep_learning": {
+      "id": "DL001",
+      "title": "Deep Learning & Neural Networks",
+      "skill": "deep learning",
+      "duration_hours": 35,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "ml_foundations",
+        "python_advanced"
+      ],
+      "description": "CNNs, RNNs, transformers, PyTorch/TensorFlow hands-on.",
+      "resources": [
+        {
+          "name": "Fast.ai",
+          "url": "https://course.fast.ai/"
+        },
+        {
+          "name": "Deep Learning Specialization",
+          "url": "https://www.coursera.org/specializations/deep-learning"
+        }
+      ]
+    },
+    "nlp_course": {
+      "id": "NLP001",
+      "title": "Natural Language Processing",
+      "skill": "nlp",
+      "duration_hours": 25,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "ml_foundations",
+        "deep_learning"
+      ],
+      "description": "Tokenization, embeddings, transformers (BERT/GPT), spaCy, HuggingFace.",
+      "resources": [
+        {
+          "name": "HuggingFace NLP Course",
+          "url": "https://huggingface.co/learn/nlp-course"
+        },
+        {
+          "name": "Stanford CS224N",
+          "url": "http://web.stanford.edu/class/cs224n/"
+        }
+      ]
+    },
+    "docker_fundamentals": {
+      "id": "DO001",
+      "title": "Docker & Containerization",
+      "skill": "docker",
+      "duration_hours": 10,
+      "difficulty": "beginner",
+      "prerequisites": [
+        "linux_basics"
+      ],
+      "description": "Containers, Dockerfiles, docker-compose, image management.",
+      "resources": [
+        {
+          "name": "Docker Official Docs",
+          "url": "https://docs.docker.com/get-started/"
+        }
+      ]
+    },
+    "kubernetes_course": {
+      "id": "K8S001",
+      "title": "Kubernetes Orchestration",
+      "skill": "kubernetes",
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "docker_fundamentals"
+      ],
+      "description": "Pods, deployments, services, ingress, Helm, cluster management.",
+      "resources": [
+        {
+          "name": "Kubernetes Official Docs",
+          "url": "https://kubernetes.io/docs/tutorials/"
+        }
+      ]
+    },
+    "aws_fundamentals": {
+      "id": "AWS001",
+      "title": "AWS Cloud Fundamentals",
+      "skill": "aws",
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "linux_basics"
+      ],
+      "description": "EC2, S3, IAM, VPC, Lambda, RDS, core AWS services.",
+      "resources": [
+        {
+          "name": "AWS Getting Started",
+          "url": "https://aws.amazon.com/getting-started/"
+        }
+      ]
+    },
+    "cicd_course": {
+      "id": "CICD001",
+      "title": "CI/CD & DevOps Practices",
+      "skill": "ci/cd",
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "git_basics",
+        "docker_fundamentals"
+      ],
+      "description": "GitHub Actions, Jenkins, pipeline design, deployment strategies.",
+      "resources": [
+        {
+          "name": "GitHub Actions Docs",
+          "url": "https://docs.github.com/en/actions"
+        }
+      ]
+    },
+    "react_course": {
+      "id": "FE001",
+      "title": "React.js Development",
+      "skill": "react",
+      "duration_hours": 25,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "html_css",
+        "javascript_basics"
+      ],
+      "description": "Components, hooks, state management, React Router, API integration.",
+      "resources": [
+        {
+          "name": "React Official Docs",
+          "url": "https://react.dev/learn"
+        }
+      ]
+    },
+    "data_pipelines": {
+      "id": "DE001",
+      "title": "Data Pipelines & ETL",
+      "skill": "data pipelines",
+      "duration_hours": 18,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "sql_fundamentals",
+        "python_fundamentals"
+      ],
+      "description": "ETL design patterns, Apache Airflow, data validation, pipeline monitoring.",
+      "resources": [
+        {
+          "name": "Apache Airflow Docs",
+          "url": "https://airflow.apache.org/docs/"
+        }
+      ]
+    },
+    "spark_course": {
+      "id": "DE002",
+      "title": "Apache Spark & Big Data",
+      "skill": "spark",
+      "duration_hours": 22,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "data_pipelines",
+        "python_advanced"
+      ],
+      "description": "PySpark, RDDs, DataFrames, Spark SQL, streaming.",
+      "resources": [
+        {
+          "name": "Spark Official Docs",
+          "url": "https://spark.apache.org/docs/latest/"
+        }
+      ]
+    },
+    "git_basics": {
+      "id": "GIT001",
+      "title": "Git & Version Control",
+      "skill": "git",
+      "duration_hours": 6,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Commits, branching, merging, pull requests, collaboration workflows.",
+      "resources": [
+        {
+          "name": "Pro Git Book",
+          "url": "https://git-scm.com/book/en/v2"
+        }
+      ]
+    },
+    "linux_basics": {
+      "id": "LX001",
+      "title": "Linux & Shell Scripting",
+      "skill": "linux",
+      "duration_hours": 10,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "CLI navigation, bash scripting, permissions, process management.",
+      "resources": [
+        {
+          "name": "Linux Command Line",
+          "url": "http://linuxcommand.org/tlcl.php"
+        }
+      ]
+    },
+    "agile_scrum": {
+      "id": "AG001",
+      "title": "Agile & Scrum Methodology",
+      "skill": "agile",
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Scrum ceremonies, sprint planning, Kanban, Jira.",
+      "resources": [
+        {
+          "name": "Scrum Guide",
+          "url": "https://scrumguides.org/"
+        }
+      ]
+    },
+    "javascript_basics": {
+      "id": "JS001",
+      "title": "JavaScript Fundamentals",
+      "skill": "javascript",
+      "duration_hours": 20,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "ES6+, closures, async/await, DOM manipulation, fetch API.",
+      "resources": [
+        {
+          "name": "javascript.info",
+          "url": "https://javascript.info/"
+        }
+      ]
+    },
+    "html_css": {
+      "id": "WEB001",
+      "title": "HTML5 & CSS3",
+      "skill": "html",
+      "duration_hours": 15,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Semantic HTML, flexbox/grid, responsive design, accessibility.",
+      "resources": [
+        {
+          "name": "MDN HTML Docs",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML"
+        }
+      ]
+    },
+    "rest_api_design": {
+      "id": "API001",
+      "title": "REST API Design & FastAPI",
+      "skill": "rest api",
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals"
+      ],
+      "description": "RESTful principles, OpenAPI spec, FastAPI, authentication.",
+      "resources": [
+        {
+          "name": "FastAPI Docs",
+          "url": "https://fastapi.tiangolo.com/"
+        }
+      ]
+    },
+    "mlops_course": {
+      "id": "MLOPS001",
+      "title": "MLOps & Model Deployment",
+      "skill": "mlops",
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "ml_foundations",
+        "docker_fundamentals",
+        "cicd_course"
+      ],
+      "description": "Model serving, monitoring, drift detection, MLflow, feature stores.",
+      "resources": [
+        {
+          "name": "MLflow Docs",
+          "url": "https://mlflow.org/docs/latest/index.html"
+        }
+      ]
+    },
+    "data_science_workflow": {
+      "id": "DS001",
+      "title": "Data Science Workflow",
+      "skill": "data science",
+      "duration_hours": 18,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals",
+        "sql_fundamentals"
+      ],
+      "description": "EDA, feature engineering, visualization, Jupyter.",
+      "resources": [
+        {
+          "name": "Kaggle Learn",
+          "url": "https://www.kaggle.com/learn"
+        }
+      ]
+    },
+    "pandas_numpy": {
+      "id": "DS002",
+      "title": "Pandas & NumPy for Data Analysis",
+      "skill": "pandas",
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "prerequisites": [
+        "python_fundamentals"
+      ],
+      "description": "DataFrame manipulation, vectorized ops, data cleaning.",
+      "resources": [
+        {
+          "name": "Pandas Docs",
+          "url": "https://pandas.pydata.org/docs/getting_started/"
+        }
+      ]
+    },
+    "terraform_course": {
+      "id": "TF001",
+      "title": "Terraform & Infrastructure as Code",
+      "skill": "terraform",
+      "duration_hours": 14,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "aws_fundamentals"
+      ],
+      "description": "HCL syntax, resource management, state, modules.",
+      "resources": [
+        {
+          "name": "Terraform Learn",
+          "url": "https://developer.hashicorp.com/terraform/tutorials"
+        }
+      ]
+    },
+    "sql_advanced": {
+      "id": "SQL002",
+      "title": "Advanced SQL & Query Optimization",
+      "skill": "sql",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "sql_fundamentals"
+      ],
+      "description": "Window functions, CTEs, indexing strategies, execution plans.",
+      "resources": [
+        {
+          "name": "Use The Index Luke",
+          "url": "https://use-the-index-luke.com/"
+        }
+      ]
+    },
+    "ml_advanced": {
+      "id": "ML002",
+      "title": "Advanced Machine Learning",
+      "skill": "machine learning",
+      "duration_hours": 25,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "ml_foundations"
+      ],
+      "description": "Ensemble methods, gradient boosting, XGBoost, model selection, production patterns.",
+      "resources": [
+        {
+          "name": "Hands-On ML O'Reilly",
+          "url": "https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/"
+        }
+      ]
+    },
+    "transformers_course": {
+      "id": "NLP002",
+      "title": "Transformers & HuggingFace",
+      "skill": "transformers",
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "nlp_course",
+        "deep_learning"
+      ],
+      "description": "BERT, GPT, fine-tuning, tokenizers, pipelines with HuggingFace.",
+      "resources": [
+        {
+          "name": "HuggingFace Course",
+          "url": "https://huggingface.co/course"
+        }
+      ]
+    },
+    "mlflow_course": {
+      "id": "MLOPS001",
+      "title": "MLflow & Experiment Tracking",
+      "skill": "mlops",
+      "duration_hours": 8,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "ml_foundations"
+      ],
+      "description": "Experiment tracking, model registry, artifact storage, deployment.",
+      "resources": [
+        {
+          "name": "MLflow Docs",
+          "url": "https://mlflow.org/docs/latest/index.html"
+        }
+      ]
+    },
+    "model_monitoring": {
+      "id": "MLOPS003",
+      "title": "Model Monitoring & Drift Detection",
+      "skill": "mlops",
+      "duration_hours": 8,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "mlops_course"
+      ],
+      "description": "Data drift, concept drift, Evidently AI, Prometheus metrics for ML.",
+      "resources": [
+        {
+          "name": "Evidently AI",
+          "url": "https://docs.evidentlyai.com/"
+        }
+      ]
+    },
+    "kafka_course": {
+      "id": "DE002",
+      "title": "Apache Kafka & Event Streaming",
+      "skill": "kafka",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "data_pipelines"
+      ],
+      "description": "Producers, consumers, topics, partitions, Kafka Streams.",
+      "resources": [
+        {
+          "name": "Confluent Kafka Tutorial",
+          "url": "https://developer.confluent.io/learn-kafka/"
+        }
+      ]
+    },
+    "airflow_course": {
+      "id": "DE003",
+      "title": "Apache Airflow & Workflow Orchestration",
+      "skill": "airflow",
+      "duration_hours": 12,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "data_pipelines",
+        "python_fundamentals"
+      ],
+      "description": "DAGs, operators, sensors, scheduling, XCom.",
+      "resources": [
+        {
+          "name": "Airflow Docs",
+          "url": "https://airflow.apache.org/docs/"
+        }
+      ]
+    },
+    "dbt_course": {
+      "id": "DE004",
+      "title": "dbt \u2014 Data Build Tool",
+      "skill": "dbt",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "sql_fundamentals"
+      ],
+      "description": "Data modelling, tests, documentation, incremental models.",
+      "resources": [
+        {
+          "name": "dbt Learn",
+          "url": "https://courses.getdbt.com/"
+        }
+      ]
+    },
+    "snowflake_course": {
+      "id": "DE005",
+      "title": "Snowflake Data Warehouse",
+      "skill": "snowflake",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "sql_fundamentals"
+      ],
+      "description": "Virtual warehouses, stages, tasks, streams, time travel.",
+      "resources": [
+        {
+          "name": "Snowflake Docs",
+          "url": "https://docs.snowflake.com/"
+        }
+      ]
+    },
+    "mongodb_course": {
+      "id": "DE006",
+      "title": "MongoDB & NoSQL Databases",
+      "skill": "mongodb",
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Documents, collections, aggregation pipeline, indexing.",
+      "resources": [
+        {
+          "name": "MongoDB University",
+          "url": "https://learn.mongodb.com/"
+        }
+      ]
+    },
+    "redis_course": {
+      "id": "DE007",
+      "title": "Redis \u2014 In-Memory Data Store",
+      "skill": "redis",
+      "duration_hours": 6,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Caching patterns, pub/sub, data structures, Redis Streams.",
+      "resources": [
+        {
+          "name": "Redis University",
+          "url": "https://university.redis.com/"
+        }
+      ]
+    },
+    "gcp_course": {
+      "id": "CLD002",
+      "title": "Google Cloud Platform Fundamentals",
+      "skill": "gcp",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "GCE, GCS, BigQuery, Vertex AI, Cloud Run, IAM.",
+      "resources": [
+        {
+          "name": "Google Cloud Skills Boost",
+          "url": "https://cloudskillsboost.google/"
+        }
+      ]
+    },
+    "azure_course": {
+      "id": "CLD003",
+      "title": "Microsoft Azure Fundamentals",
+      "skill": "azure",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "VMs, Azure Storage, Azure ML, AKS, DevOps pipelines.",
+      "resources": [
+        {
+          "name": "Microsoft Learn",
+          "url": "https://learn.microsoft.com/en-us/azure/"
+        }
+      ]
+    },
+    "k8s_fundamentals": {
+      "id": "K8S001",
+      "title": "Kubernetes Fundamentals",
+      "skill": "kubernetes",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "docker_fundamentals"
+      ],
+      "description": "Pods, deployments, services, ingress, ConfigMaps, Helm.",
+      "resources": [
+        {
+          "name": "Kubernetes Docs",
+          "url": "https://kubernetes.io/docs/tutorials/"
+        }
+      ]
+    },
+    "terraform_advanced": {
+      "id": "TF002",
+      "title": "Advanced Terraform & IaC",
+      "skill": "terraform",
+      "duration_hours": 12,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "terraform_course"
+      ],
+      "description": "Modules, remote state, Terragrunt, multi-cloud patterns.",
+      "resources": [
+        {
+          "name": "Terraform Registry",
+          "url": "https://registry.terraform.io/"
+        }
+      ]
+    },
+    "github_actions": {
+      "id": "CICD002",
+      "title": "GitHub Actions & CI/CD Pipelines",
+      "skill": "ci/cd",
+      "duration_hours": 8,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "git_basics"
+      ],
+      "description": "Workflows, jobs, marketplace actions, Docker builds, deployment.",
+      "resources": [
+        {
+          "name": "GitHub Actions Docs",
+          "url": "https://docs.github.com/en/actions"
+        }
+      ]
+    },
+    "fastapi_course": {
+      "id": "WEB001",
+      "title": "FastAPI \u2014 Production APIs",
+      "skill": "fastapi",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals",
+        "rest_api_design"
+      ],
+      "description": "Pydantic, dependency injection, async, auth, OpenAPI.",
+      "resources": [
+        {
+          "name": "FastAPI Docs",
+          "url": "https://fastapi.tiangolo.com/"
+        }
+      ]
+    },
+    "django_course": {
+      "id": "WEB002",
+      "title": "Django & Django REST Framework",
+      "skill": "django",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals",
+        "sql_fundamentals"
+      ],
+      "description": "ORM, serializers, auth, signals, admin panel.",
+      "resources": [
+        {
+          "name": "Django Docs",
+          "url": "https://docs.djangoproject.com/"
+        }
+      ]
+    },
+    "react_advanced": {
+      "id": "WEB003",
+      "title": "Advanced React & State Management",
+      "skill": "react",
+      "duration_hours": 15,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "react_course",
+        "javascript_basics"
+      ],
+      "description": "Hooks, Context, Redux Toolkit, React Query, performance.",
+      "resources": [
+        {
+          "name": "React Docs",
+          "url": "https://react.dev/"
+        }
+      ]
+    },
+    "typescript_course": {
+      "id": "WEB004",
+      "title": "TypeScript Essentials",
+      "skill": "typescript",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "javascript_basics"
+      ],
+      "description": "Types, interfaces, generics, decorators, strict mode.",
+      "resources": [
+        {
+          "name": "TypeScript Handbook",
+          "url": "https://www.typescriptlang.org/docs/"
+        }
+      ]
+    },
+    "graphql_course": {
+      "id": "WEB005",
+      "title": "GraphQL API Design",
+      "skill": "graphql",
+      "duration_hours": 8,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "rest_api_design"
+      ],
+      "description": "Schema, resolvers, mutations, subscriptions, Apollo Server.",
+      "resources": [
+        {
+          "name": "GraphQL.org",
+          "url": "https://graphql.org/learn/"
+        }
+      ]
+    },
+    "microservices_course": {
+      "id": "ARCH001",
+      "title": "Microservices Architecture",
+      "skill": "microservices",
+      "duration_hours": 12,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "rest_api_design",
+        "docker_fundamentals"
+      ],
+      "description": "Service decomposition, API gateways, service mesh, observability.",
+      "resources": [
+        {
+          "name": "Martin Fowler Microservices",
+          "url": "https://martinfowler.com/articles/microservices.html"
+        }
+      ]
+    },
+    "java_course": {
+      "id": "PL002",
+      "title": "Java for Backend Development",
+      "skill": "java",
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "OOP, Spring Boot, JVM tuning, concurrency, Maven.",
+      "resources": [
+        {
+          "name": "Baeldung",
+          "url": "https://www.baeldung.com/"
+        }
+      ]
+    },
+    "go_course": {
+      "id": "PL003",
+      "title": "Go (Golang) Fundamentals",
+      "skill": "go",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Goroutines, channels, interfaces, HTTP servers, testing.",
+      "resources": [
+        {
+          "name": "Go Tour",
+          "url": "https://go.dev/tour/"
+        }
+      ]
+    },
+    "r_course": {
+      "id": "PL004",
+      "title": "R for Statistical Analysis",
+      "skill": "r",
+      "duration_hours": 12,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "tidyverse, ggplot2, statistical modelling, R Markdown.",
+      "resources": [
+        {
+          "name": "R for Data Science",
+          "url": "https://r4ds.had.co.nz/"
+        }
+      ]
+    },
+    "spark_fundamentals": {
+      "id": "SP001",
+      "title": "Apache Spark Fundamentals",
+      "skill": "spark",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "python_fundamentals",
+        "sql_fundamentals"
+      ],
+      "description": "RDDs, DataFrames, Spark SQL, streaming basics.",
+      "resources": [
+        {
+          "name": "Spark Docs",
+          "url": "https://spark.apache.org/docs/latest/"
+        }
+      ]
+    },
+    "computer_vision_course": {
+      "id": "CV001",
+      "title": "Computer Vision with PyTorch",
+      "skill": "computer vision",
+      "duration_hours": 20,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "deep_learning"
+      ],
+      "description": "CNNs, object detection (YOLO, Faster-RCNN), segmentation, OpenCV.",
+      "resources": [
+        {
+          "name": "PyTorch CV Tutorial",
+          "url": "https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html"
+        }
+      ]
+    },
+    "elasticsearch_course": {
+      "id": "DE008",
+      "title": "Elasticsearch & Search Engineering",
+      "skill": "elasticsearch",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Indexing, querying, aggregations, relevance tuning, ELK stack.",
+      "resources": [
+        {
+          "name": "Elasticsearch Docs",
+          "url": "https://www.elastic.co/guide/"
+        }
+      ]
+    },
+    "bigquery_course": {
+      "id": "DE009",
+      "title": "BigQuery & Cloud Analytics",
+      "skill": "bigquery",
+      "duration_hours": 8,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "sql_fundamentals"
+      ],
+      "description": "Partitioning, clustering, UDFs, ML in BigQuery, cost optimisation.",
+      "resources": [
+        {
+          "name": "BigQuery Docs",
+          "url": "https://cloud.google.com/bigquery/docs"
+        }
+      ]
+    },
+    "scala_course": {
+      "id": "PL001",
+      "title": "Scala Fundamentals",
+      "skill": "scala",
+      "duration_hours": 15,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Functional programming, case classes, pattern matching, Akka basics.",
+      "resources": [
+        {
+          "name": "Scala Docs",
+          "url": "https://docs.scala-lang.org/"
+        }
+      ]
+    },
+    "project_management_course": {
+      "id": "OPS001",
+      "title": "Project Management Fundamentals",
+      "skill": "project management",
+      "duration_hours": 8,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Planning, scheduling, risk management, stakeholder communication.",
+      "resources": [
+        {
+          "name": "PMI Resources",
+          "url": "https://www.pmi.org/learning/library"
+        }
+      ]
+    },
+    "power_bi_course": {
+      "id": "OPS003",
+      "title": "Power BI \u2014 Business Intelligence",
+      "skill": "power bi",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Data modelling, DAX, dashboards, Power Query.",
+      "resources": [
+        {
+          "name": "Microsoft Power BI Docs",
+          "url": "https://learn.microsoft.com/en-us/power-bi/"
+        }
+      ]
+    },
+    "tableau_course": {
+      "id": "OPS004",
+      "title": "Tableau for Data Visualisation",
+      "skill": "tableau",
+      "duration_hours": 10,
+      "difficulty": "intermediate",
+      "prerequisites": [],
+      "description": "Charts, dashboards, calculated fields, Tableau Prep.",
+      "resources": [
+        {
+          "name": "Tableau Training",
+          "url": "https://www.tableau.com/learn/training"
+        }
+      ]
+    },
+    "qa_fundamentals": {
+      "id": "OPS005",
+      "title": "Quality Assurance & Testing",
+      "skill": "quality assurance",
+      "duration_hours": 10,
+      "difficulty": "beginner",
+      "prerequisites": [],
+      "description": "Test planning, manual testing, pytest, Selenium basics.",
+      "resources": [
+        {
+          "name": "ISTQB Foundation",
+          "url": "https://www.istqb.org/"
+        }
+      ]
+    },
+    "system_design": {
+      "id": "ARCH002",
+      "title": "System Design Fundamentals",
+      "skill": "microservices",
+      "duration_hours": 15,
+      "difficulty": "advanced",
+      "prerequisites": [
+        "rest_api_design",
+        "sql_fundamentals"
+      ],
+      "description": "Scalability, load balancing, caching, CAP theorem, distributed systems.",
+      "resources": [
+        {
+          "name": "System Design Primer",
+          "url": "https://github.com/donnemartin/system-design-primer"
+        }
+      ]
+    },
+    "pytorch_course": {
+      "id": "ML003",
+      "title": "PyTorch for Deep Learning",
+      "skill": "pytorch",
+      "duration_hours": 20,
+      "difficulty": "intermediate",
+      "prerequisites": [
+        "ml_foundations",
+        "python_fundamentals"
+      ],
+      "description": "Tensors, autograd, neural networks, training loops, model saving, GPU usage.",
+      "resources": [
+        {
+          "name": "PyTorch Official Tutorials",
+          "url": "https://pytorch.org/tutorials/"
+        },
+        {
+          "name": "Deep Learning with PyTorch",
+          "url": "https://www.learnpytorch.io/"
+        }
+      ]
+    },
+    "numpy_course": {
+      "id": "DE010",
+      "title": "NumPy for Scientific Computing",
+      "skill": "numpy",
+      "duration_hours": 6,
+      "difficulty": "beginner",
+      "prerequisites": [
+        "python_fundamentals"
+      ],
+      "description": "Arrays, broadcasting, linear algebra, random, performance tips.",
+      "resources": [
+        {
+          "name": "NumPy Docs",
+          "url": "https://numpy.org/doc/stable/"
+        }
+      ]
+    }
+  }
+}

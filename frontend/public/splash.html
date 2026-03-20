@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerDNA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <style>
+    :root {
+      --bg-deep:     #020610;
+      --bg-mid:      #050d1a;
+      --teal:        #00f5d4;
+      --teal-dim:    #00b39a;
+      --teal-glow:   rgba(0, 245, 212, 0.18);
+      --amber:       #f5a623;
+      --amber-glow:  rgba(245, 166, 35, 0.22);
+      --navy:        #0a1628;
+      --white:       #e8f0ff;
+      --white-dim:   rgba(232, 240, 255, 0.55);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg-deep);
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── Noise / grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Splash wrapper ── */
+    #splash {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 1000;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%,
+        #071328 0%, var(--bg-deep) 100%);
+    }
+
+    /* ── Radial vignette ── */
+    #splash::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 50%,
+        transparent 40%, rgba(0,0,0,0.85) 100%);
+      pointer-events: none;
+    }
+
+    /* ─────────────────────────────────────
+       DNA HELIX (SVG)
+    ───────────────────────────────────── */
+    #dna-wrap {
+      position: relative;
+      width: 120px; height: 160px;
+      margin-bottom: 28px;
+    }
+
+    #dna-svg {
+      width: 100%; height: 100%;
+      overflow: visible;
+      filter: drop-shadow(0 0 14px var(--teal)) drop-shadow(0 0 30px rgba(0,245,212,0.3));
+    }
+
+    .strand-left  { stroke: var(--teal);  fill: none; stroke-width: 2.2; stroke-linecap: round; }
+    .strand-right { stroke: var(--amber); fill: none; stroke-width: 2.2; stroke-linecap: round; }
+    .rung         { stroke: rgba(255,255,255,0.25); fill: none; stroke-width: 1.2; stroke-linecap: round; }
+
+    .node-teal  { fill: var(--teal);  }
+    .node-amber { fill: var(--amber); }
+
+    /* dashoffset set via JS */
+
+    /* ─────────────────────────────────────
+       BRAND TEXT
+    ───────────────────────────────────── */
+    #brand {
+      display: flex; align-items: baseline; gap: 0;
+      position: relative;
+    }
+
+    #word-career, #word-dna {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 11vw, 110px);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      opacity: 0;
+      position: relative;
+    }
+
+    #word-career {
+      color: var(--white);
+      text-shadow:
+        0 0 40px rgba(232,240,255,0.15),
+        0 2px 0 rgba(0,0,0,0.4);
+    }
+
+    #word-dna {
+      color: var(--teal);
+      text-shadow:
+        0 0 30px var(--teal),
+        0 0 60px rgba(0,245,212,0.4),
+        0 2px 0 rgba(0,0,0,0.4);
+    }
+
+    /* impact glow flash */
+    #impact-glow {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 0; height: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,245,212,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ─────────────────────────────────────
+       TAGLINE
+    ───────────────────────────────────── */
+    #tagline {
+      margin-top: 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(11px, 1.8vw, 15px);
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      opacity: 0;
+      position: relative;
+    }
+
+    #tagline .word { display: inline-block; opacity: 0; }
+    #tagline .word + .word { margin-left: 0.4em; }
+
+    /* shimmer pseudo-element */
+    #tagline::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+      transform: skewX(-20deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ─────────────────────────────────────
+       PARTICLE / DOT GRID RIPPLE
+    ───────────────────────────────────── */
+    #particle-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ─────────────────────────────────────
+       SCAN LINE (decorative)
+    ───────────────────────────────────── */
+    #scan-line {
+      position: absolute;
+      width: 60%; max-width: 340px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: 0;
+      box-shadow: 0 0 12px var(--teal);
+    }
+
+    /* ─────────────────────────────────────
+       ENTER BUTTON
+    ───────────────────────────────────── */
+    #enter-btn {
+      margin-top: 40px;
+      padding: 12px 38px;
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: transparent;
+      border: 1px solid rgba(0, 245, 212, 0.4);
+      border-radius: 2px;
+      cursor: pointer;
+      opacity: 0;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    #enter-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--teal-glow);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    #enter-btn:hover {
+      border-color: var(--teal);
+      box-shadow: 0 0 20px rgba(0,245,212,0.25);
+    }
+    #enter-btn:hover::before { opacity: 1; }
+
+    /* ─────────────────────────────────────
+       CORNER DECORATIONS
+    ───────────────────────────────────── */
+    .corner {
+      position: absolute;
+      width: 22px; height: 22px;
+      border-color: rgba(0,245,212,0.3);
+      border-style: solid;
+      opacity: 0;
+    }
+    .corner-tl { top: 20px; left: 20px; border-width: 1.5px 0 0 1.5px; }
+    .corner-tr { top: 20px; right: 20px; border-width: 1.5px 1.5px 0 0; }
+    .corner-bl { bottom: 20px; left: 20px; border-width: 0 0 1.5px 1.5px; }
+    .corner-br { bottom: 20px; right: 20px; border-width: 0 1.5px 1.5px 0; }
+
+    /* ─────────────────────────────────────
+       STATUS LINE (data ticker)
+    ───────────────────────────────────── */
+    #status-line {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: rgba(0,245,212,0.35);
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    /* ── fade-out overlay ── */
+    #fade-cover {
+      position: fixed; inset: 0;
+      background: #020610;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1001;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- fade-out cover -->
+  <div id="fade-cover"></div>
+
+  <!-- CORNERS -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- DNA Helix SVG -->
+    <div id="dna-wrap">
+      <svg id="dna-svg" viewBox="0 0 60 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Left sine strand -->
+        <path id="sl" class="strand-left"
+          d="M30,4
+             C15,18 45,32 30,46
+             C15,60 45,74 30,88
+             C15,102 45,116 30,130
+             C15,144 45,158 30,160"
+        />
+        <!-- Right sine strand (opposite phase) -->
+        <path id="sr" class="strand-right"
+          d="M30,4
+             C45,18 15,32 30,46
+             C45,60 15,74 30,88
+             C45,102 15,116 30,130
+             C45,144 15,158 30,160"
+        />
+
+        <!-- Rungs -->
+        <line class="rung" x1="21" y1="25" x2="39" y2="25"/>
+        <line class="rung" x1="39" y1="46" x2="21" y2="46"/>
+        <line class="rung" x1="21" y1="67" x2="39" y2="67"/>
+        <line class="rung" x1="39" y1="88" x2="21" y2="88"/>
+        <line class="rung" x1="21" y1="109" x2="39" y2="109"/>
+        <line class="rung" x1="39" y1="130" x2="21" y2="130"/>
+        <line class="rung" x1="21" y1="151" x2="39" y2="151"/>
+
+        <!-- Glow nodes - left -->
+        <circle class="node-teal" cx="21" cy="25"  r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="39" cy="46"  r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="21" cy="67"  r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="39" cy="88"  r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="21" cy="109" r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="39" cy="130" r="2.5" opacity="0.9"/>
+        <circle class="node-teal" cx="21" cy="151" r="2.5" opacity="0.9"/>
+
+        <!-- Glow nodes - right -->
+        <circle class="node-amber" cx="39" cy="25"  r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="21" cy="46"  r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="39" cy="67"  r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="21" cy="88"  r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="39" cy="109" r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="21" cy="130" r="2.5" opacity="0.9"/>
+        <circle class="node-amber" cx="39" cy="151" r="2.5" opacity="0.9"/>
+      </svg>
+    </div>
+
+    <!-- Brand -->
+    <div id="brand">
+      <div id="impact-glow"></div>
+      <span id="word-career">Career</span>
+      <span id="word-dna">DNA</span>
+    </div>
+
+    <!-- Scan line below brand -->
+    <div id="scan-line"></div>
+
+    <!-- Tagline -->
+    <div id="tagline" aria-label="Decode Your Potential">
+      <span class="word">Decode</span>
+      <span class="word">Your</span>
+      <span class="word">Potential</span>
+    </div>
+
+    <!-- Enter button -->
+    <button id="enter-btn" onclick="enterSite()">Enter &rarr;</button>
+
+    <!-- Status ticker -->
+    <div id="status-line">CAREERDNA_PLATFORM_v2.4 &nbsp;|&nbsp; SEQUENCE_READY &nbsp;|&nbsp; 2026</div>
+  </div>
+
+  <script>
+    /* ══════════════════════════════════════
+       SETUP: DNA DASH OFFSET
+    ══════════════════════════════════════ */
+    const sl = document.getElementById('sl');
+    const sr = document.getElementById('sr');
+
+    function getLen(el) {
+      return el.getTotalLength ? el.getTotalLength() : 400;
+    }
+
+    const lenL = getLen(sl);
+    const lenR = getLen(sr);
+
+    sl.style.strokeDasharray  = lenL;
+    sl.style.strokeDashoffset = lenL;
+    sr.style.strokeDasharray  = lenR;
+    sr.style.strokeDashoffset = lenR;
+
+    /* Hide nodes initially */
+    document.querySelectorAll('.node-teal, .node-amber, .rung').forEach(el => {
+      el.style.opacity = 0;
+    });
+
+    /* ══════════════════════════════════════
+       PARTICLE CANVAS
+    ══════════════════════════════════════ */
+    const canvas = document.getElementById('particle-canvas');
+    const ctx    = canvas.getContext('2d');
+    let dots = [];
+    let animFrame;
+    let particleOpacity = 0;
+
+    function resizeCanvas() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      buildDots();
+    }
+
+    function buildDots() {
+      dots = [];
+      const cols = Math.ceil(canvas.width  / 38);
+      const rows = Math.ceil(canvas.height / 38);
+      const cx   = canvas.width  / 2;
+      const cy   = canvas.height / 2;
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const x = c * 38 + 19;
+          const y = r * 38 + 19;
+          const dist = Math.hypot(x - cx, y - cy);
+          dots.push({ x, y, dist, scale: 0, maxScale: 0.7 + Math.random() * 0.6 });
+        }
+      }
+      dots.sort((a, b) => a.dist - b.dist);
+    }
+
+    let rippleStart = null;
+
+    function animateDots(ts) {
+      if (!rippleStart) rippleStart = ts;
+      const elapsed = (ts - rippleStart) / 1000;
+      const maxDist = Math.hypot(canvas.width / 2, canvas.height / 2);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      dots.forEach(d => {
+        const waveFront = elapsed * 480;
+        const trail = 340;
+        const diff = waveFront - d.dist;
+
+        let alpha = 0;
+        if (diff > 0 && diff < trail) {
+          alpha = Math.sin((diff / trail) * Math.PI) * particleOpacity;
+        } else if (diff >= trail) {
+          alpha = Math.max(0, (1 - (diff - trail) / 600)) * particleOpacity * 0.35;
+        }
+
+        if (alpha > 0.01) {
+          const isAmber = (Math.floor(d.x / 38) + Math.floor(d.y / 38)) % 5 === 0;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, 1.6 * d.maxScale, 0, Math.PI * 2);
+          ctx.fillStyle = isAmber
+            ? `rgba(245,166,35,${alpha})`
+            : `rgba(0,245,212,${alpha})`;
+          ctx.fill();
+        }
+      });
+
+      if (elapsed < 4) {
+        animFrame = requestAnimationFrame(animateDots);
+      }
+    }
+
+    function startRipple() {
+      rippleStart = null;
+      resizeCanvas();
+      animFrame = requestAnimationFrame(animateDots);
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    /* ══════════════════════════════════════
+       GSAP MASTER TIMELINE – 5 SECONDS
+    ══════════════════════════════════════ */
+    const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+
+    /* ── Phase 0 → 0.8s: Corners fade, DNA draws ── */
+    tl
+      .to('.corner', { opacity: 1, duration: 0.4, stagger: 0.08 }, 0)
+
+      /* strand left */
+      .to(sl, { strokeDashoffset: 0, duration: 0.9, ease: 'power1.inOut' }, 0.05)
+      /* strand right staggered slightly */
+      .to(sr, { strokeDashoffset: 0, duration: 0.9, ease: 'power1.inOut' }, 0.15)
+
+      /* nodes pop up as strands draw */
+      .to('.node-teal, .node-amber', {
+          opacity: 0.9, duration: 0.2, stagger: 0.07, ease: 'back.out(3)'
+        }, 0.25)
+      .to('.rung', {
+          opacity: 1, duration: 0.15, stagger: 0.06, ease: 'power1.out'
+        }, 0.35)
+
+    /* ── Phase 0.8 → 1.8s: Split text entrance ── */
+      .set('#word-career', { x: -120 }, 0)
+      .set('#word-dna',    { x:  120 }, 0)
+
+      .to('#word-career', { x: 0, opacity: 1, duration: 0.7, ease: 'expo.out' }, 0.82)
+      .to('#word-dna',    { x: 0, opacity: 1, duration: 0.7, ease: 'expo.out' }, 0.85)
+
+      /* impact glow flash */
+      .to('#impact-glow', {
+          width: 500, height: 500, opacity: 1, duration: 0.18, ease: 'power2.out'
+        }, 1.4)
+      .to('#impact-glow', { opacity: 0, duration: 0.5, ease: 'power2.in' }, 1.58)
+
+      /* scan line sweeps */
+      .to('#scan-line', { opacity: 1, duration: 0.18 }, 1.42)
+      .to('#scan-line', { opacity: 0, duration: 0.35, delay: 0.2 }, 1.6)
+
+    /* ── Phase 1.8 → 3s: Tagline word by word ── */
+      .to('#tagline', { opacity: 1, duration: 0.1 }, 1.85)
+      .to('#tagline .word', {
+          opacity: 1, y: 0, duration: 0.4, stagger: 0.22, ease: 'power2.out'
+        }, 1.9)
+      /* shimmer sweep */
+      .to('#tagline::after', { opacity: 1, duration: 0 }, 2.6)
+
+    /* ── Phase 3 → 4.2s: Particle ripple ── */
+      .call(() => {
+        particleOpacity = 0;
+        gsap.to({ v: 0 }, {
+          v: 1,
+          duration: 0.4,
+          onUpdate: function () { particleOpacity = this.targets()[0].v; }
+        });
+        gsap.to(canvas, { opacity: 1, duration: 0.3 });
+        startRipple();
+      }, null, 3.05)
+
+      .to('.node-teal, .node-amber', {
+          scale: 1.6, opacity: 1,
+          duration: 0.4, stagger: { each: 0.05, from: 'center' },
+          ease: 'power2.out', yoyo: true, repeat: 1
+        }, 3.1)
+
+    /* ── Phase 4.2 → 5s: Fade out and show Enter ── */
+      .call(() => {
+        cancelAnimationFrame(animFrame);
+      }, null, 4.22)
+
+      .to('#particle-canvas', { opacity: 0, duration: 0.5 }, 4.22)
+      .to(canvas,             { opacity: 0, duration: 0.5 }, 4.22)
+
+      .to(['#dna-wrap', '#brand', '#tagline', '#scan-line'], {
+          y: -18, opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power2.in'
+        }, 4.25)
+
+      .to('#status-line', { opacity: 1, duration: 0.3 }, 4.3)
+      .to('#enter-btn',   { opacity: 1, duration: 0.45, ease: 'power2.out' }, 4.45)
+
+    ;
+
+    /* ══════════════════════════════════════
+       GSAP: word shimmer (CSS fallback)
+    ══════════════════════════════════════ */
+    gsap.fromTo('#tagline', {
+        backgroundPosition: '-200% 0'
+      }, {
+        backgroundPosition: '300% 0',
+        duration: 1.6, repeat: -1, ease: 'none', delay: 2.5,
+        background: 'linear-gradient(90deg, rgba(232,240,255,0.55) 0%, rgba(255,255,255,0.95) 50%, rgba(232,240,255,0.55) 100%)',
+        backgroundSize: '200% 100%',
+        webkitBackgroundClip: 'text',
+        webkitTextFillColor: 'transparent',
+      });
+
+    /* ══════════════════════════════════════
+       INITIAL tagline word positions
+    ══════════════════════════════════════ */
+    gsap.set('#tagline .word', { y: 10, opacity: 0 });
+
+    /* ══════════════════════════════════════
+       ENTER SITE
+    ══════════════════════════════════════ */
+    function enterSite() {
+      const cover = document.getElementById('fade-cover');
+      gsap.to(cover, {
+        opacity: 1, duration: 0.55, ease: 'power2.inOut',
+        onComplete: () => {
+          // Redirect to the main app
+          window.location.href = '/';
+        }
+      });
+    }
+
+    /* Also skip splash on any click on blank area after button shown */
+    document.getElementById('splash').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget && tl.progress() > 0.9) {
+        enterSite();
+      }
+    });
+  </script>
+</body>
+</html>
