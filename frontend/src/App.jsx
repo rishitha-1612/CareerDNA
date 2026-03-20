@@ -98,6 +98,9 @@ function sourceIcon(source) {
 }
 
 function App() {
+  const envUrl = import.meta.env.VITE_API_URL;
+  const API_BASE = (envUrl && envUrl.trim() !== '') ? envUrl.replace(/\/$/, '') : 'http://localhost:8000';
+  
   const [activeTab, setActiveTab] = useState('analyze')
   const [resumeText, setResumeText] = useState('')
   const [jdText, setJdText] = useState('')
@@ -123,7 +126,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const r = await fetch('http://localhost:8000/api/v1/sessions')
+      const r = await fetch(`${API_BASE}/api/v1/sessions`)
       const d = await r.json()
       setHistory(d.sessions || [])
     } catch (e) { console.error(e) }
@@ -131,7 +134,7 @@ function App() {
 
   const fetchStats = async () => {
     try {
-      const r = await fetch('http://localhost:8000/api/v1/stats')
+      const r = await fetch(`${API_BASE}/api/v1/stats`)
       const d = await r.json()
       setStats(d)
     } catch (e) { console.error(e) }
@@ -144,17 +147,20 @@ function App() {
     }
     setLoading(true)
     try {
-      const r = await fetch('http://localhost:8000/api/v1/analyze/text', {
+      const r = await fetch(`${API_BASE}/api/v1/analyze/text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resume_text: resumeText, jd_text: jdText, candidate_name: 'Guest User' }),
       })
+      if (!r.ok) {
+        throw new Error(`HTTP error! status: ${r.status}`);
+      }
       const d = await r.json()
       setResults(d.pathway)
       fetchHistory(); fetchStats()
     } catch (err) {
-      console.error(err)
-      alert('Error connecting to backend. Make sure it is running on port 8000.')
+      console.error("Backend Error:", err)
+      alert(`Error connecting to backend (${API_BASE}). Make sure it is running. Detail: ` + err.message)
     }
     setLoading(false)
   }
