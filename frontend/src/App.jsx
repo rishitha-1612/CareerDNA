@@ -98,8 +98,7 @@ function sourceIcon(source) {
 }
 
 function App() {
-  const envUrl = import.meta.env.VITE_API_URL;
-  const API_BASE = (envUrl && envUrl.trim() !== '') ? envUrl.replace(/\/$/, '') : 'http://localhost:8000';
+  const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
   
   const [activeTab, setActiveTab] = useState('analyze')
   const [resumeText, setResumeText] = useState('')
