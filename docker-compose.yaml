@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: resume-analyser-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: resume-analyser-frontend
+    ports:
+      - "5173:80"  # Expose NGINX on port 5173 locally (similar to Vite's default dev port)
+    depends_on:
+      - backend
+    restart: unless-stopped
